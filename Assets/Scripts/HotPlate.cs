@@ -50,6 +50,12 @@ public class HotPlate : MonoBehaviour
         {
             Debug.Log("HotPlate detected a heatable object: " + collision.gameObject.name);
             _smokeEffect.GetComponent<ParticleSystem>().Play();
+
+            if (GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().enabled = true;
+                GetComponent<AudioSource>().Play();
+            }
         }
         else
         {
@@ -61,6 +67,8 @@ public class HotPlate : MonoBehaviour
             //    particleSystem.Stop();
             //}
         }
+
+        
     }
 
     void OnCollisionExit(Collision collision)
