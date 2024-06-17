@@ -140,7 +140,9 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -5282565271574542108, guid: 1bcf75a2badcc9d41b40a2e8519b3382, type: 2}
+  - {fileID: 2256367023764341182, guid: 69f0f5aa212643f43b76eb32807fc855, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -830,7 +832,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -850,11 +858,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6143a858-a298-4a20-9d4e-556955c2f0d4
+  cloudProjectId: 3e27a42c-d328-4f20-9080-9253c1372cd8
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: VR Fishing Truck
-  organizationId: jordangrilly-gmail-com
+  organizationId: shiroteakitsune
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
