@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class HotPlate : MonoBehaviour
 {
-    private IHeatable heatable;
+    [SerializeField]
+    private GameObject _smokeEffect;
+
+    private IHeatable _heatable;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _smokeEffect.GetComponent<ParticleSystem>().Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (heatable != null)
+        if (_heatable != null)
         {
-            heatable.Heat();
+            _heatable.Heat();
         }
     }
 
@@ -26,15 +29,17 @@ public class HotPlate : MonoBehaviour
         Debug.Log("HotPlate is heating up");
 
         // check if collision object has IHeatable interface
-        heatable = collision.gameObject.GetComponent<IHeatable>();
+        _heatable = collision.gameObject.GetComponent<IHeatable>();
 
-        if (heatable != null)
+        if (_heatable != null)
         {
             Debug.Log("HotPlate detected a heatable object: " + collision.gameObject.name);
+            _smokeEffect.GetComponent<ParticleSystem>().Play();
         }
         else
         {
             Debug.Log("Collision object does not have IHeatable interface: " + collision.gameObject.name);
+            _smokeEffect.GetComponent<ParticleSystem>().Stop();
         }
     }
 
@@ -43,9 +48,10 @@ public class HotPlate : MonoBehaviour
         Debug.Log("HotPlate is cooling down");
 
         // Check if the exiting object is the same as the current heatable object
-        if (collision.gameObject.GetComponent<IHeatable>() == heatable)
+        if (collision.gameObject.GetComponent<IHeatable>() == _heatable)
         {
-            heatable = null;
+            _heatable = null;
+            _smokeEffect.GetComponent<ParticleSystem>().Stop();
         }
     }
 }
