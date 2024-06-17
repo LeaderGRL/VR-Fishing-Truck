@@ -8,29 +8,33 @@ public class Fish : MonoBehaviour, IHeatable
     public int heatTime { get; set; }
     public bool isCooked { get; set; }
 
+    private Coroutine heatingCoroutine;
+
+    void Start()
+    {
+        heatTime = 5;
+        isCooked = false;
+    }
     public void Heat()
     {
-        Debug.Log("Fish is being heated");
+        Debug.Log("Fish is being heated : " + isCooked);
 
-        if (!isCooked)
+        if (!isCooked && heatingCoroutine == null)
         {
-            StartCoroutine(Heating());
+            heatingCoroutine = StartCoroutine(Heating());
+            Debug.Log("Fish is being cooked");
+        }
+        else
+        {
+            Debug.Log("Fish is already cooked");
         }
     }
 
     private IEnumerator Heating()
     {
-        isCooked = true;
-        Debug.Log("Fish is cooked");
+        Debug.Log("Fish is cooking");
         yield return new WaitForSeconds(heatTime);
-        isCooked = false;
+        isCooked = true;
+        heatingCoroutine = null; // Reset coroutine reference after heating is done
     }
-
-    void Start()
-    {
-        heatTime = 10;
-        isCooked = false;
-    }
-
-
 }
