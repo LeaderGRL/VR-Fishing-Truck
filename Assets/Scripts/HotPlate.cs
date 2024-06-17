@@ -6,21 +6,36 @@ public class HotPlate : MonoBehaviour
 {
     [SerializeField]
     private GameObject _smokeEffect;
-
+    [SerializeField]
+    private GameObject _fireEffect;
+    
+    private Coroutine heatingCoroutine;
     private IHeatable _heatable;
 
     // Start is called before the first frame update
     void Start()
     {
         _smokeEffect.GetComponent<ParticleSystem>().Stop();
+        _fireEffect.SetActive(false);
+        //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    particleSystem.Stop();
+        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_heatable != null)
+        if (_heatable == null)
         {
-            _heatable.Heat();
+            return;
+        }
+
+        _heatable.Heat();
+
+        if (_heatable.isCooked && heatingCoroutine == null)
+        {
+            heatingCoroutine = StartCoroutine(Enflame());
         }
     }
 
@@ -40,6 +55,11 @@ public class HotPlate : MonoBehaviour
         {
             Debug.Log("Collision object does not have IHeatable interface: " + collision.gameObject.name);
             _smokeEffect.GetComponent<ParticleSystem>().Stop();
+            //_fireEffect.SetActive(false);
+            //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
+            //{
+            //    particleSystem.Stop();
+            //}
         }
     }
 
@@ -52,6 +72,21 @@ public class HotPlate : MonoBehaviour
         {
             _heatable = null;
             _smokeEffect.GetComponent<ParticleSystem>().Stop();
+            //_fireEffect.SetActive(false);
+            //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
+            //{
+            //    particleSystem.Stop();
+            //}
         }
+    }
+
+    private IEnumerator Enflame() {
+        yield return new WaitForSeconds(5);
+        Debug.Log("HotPlate is enflaming");
+        _fireEffect.SetActive(true);
+        //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
+        //{
+        //    particleSystem.Play();
+        //}
     }
 }
