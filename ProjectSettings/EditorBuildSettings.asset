@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
-  - enabled: 1
+  - enabled: 0
     path: Assets/TestPierre/SamplePierreV2.unity
     guid: 397a12c4c17b66245a4cd3b790a31e22
+  - enabled: 0
+    path: Assets/Obi/Samples/Fluid/FluidViscosity.unity
+    guid: fcc10f4de9b834b0880e324db04b3fc5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e3fa4257f166297448c1a79c9bb5ecee, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1bcf75a2badcc9d41b40a2e8519b3382, type: 2}
