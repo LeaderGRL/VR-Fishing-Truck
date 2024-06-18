@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fish
+  - Shooter
+  - Collider2
+  - Collider1
+  - Validate
+  - CutFish
+  - Plate
   layers:
   - Default
   - TransparentFX

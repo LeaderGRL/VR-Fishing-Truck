@@ -7,11 +7,13 @@ public class OrderManager : MonoBehaviour
 {
     [SerializeField] private OrderInfo orderPrefab;
     [SerializeField] private float SpawnTimer;
-    [SerializeField] private Transform OrderList;
+    [SerializeField] private Transform OrderListTransform;
+    [SerializeField] private int maxOrders;
 
     private int OrderCount = 1;
     private float elapsedTime = 0f;
     private List<OrderInfo> orderList = new();
+    public List<OrderInfo> OrderList => orderList;
 
 
     // Update is called once per frame
@@ -22,17 +24,18 @@ public class OrderManager : MonoBehaviour
         if (elapsedTime > SpawnTimer)
         {
             elapsedTime = 0;
-            var order = Instantiate(orderPrefab, OrderList);
+            if (orderList.Count >= maxOrders) return;
+            var order = Instantiate(orderPrefab, OrderListTransform);
             orderList.Add(order);
-            order.OnTimerFinished += LateOrder;
+            //order.OnTimerFinished += LateOrder;
             order.OrderNumber = OrderCount;
             OrderCount++;
         }
     }
     
-    private void LateOrder(OrderInfo order)
-    {
-        Debug.Log("finish timer");
-        orderList.Remove(order);
-    }
+    //private void LateOrder(OrderInfo order)
+    //{
+    //    Debug.Log("finish timer");
+    //    orderList.Remove(order);
+    //}
 }
