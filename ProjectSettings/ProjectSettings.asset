@@ -141,8 +141,8 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1
   preloadedAssets:
-  - {fileID: -5282565271574542108, guid: 1bcf75a2badcc9d41b40a2e8519b3382, type: 2}
-  - {fileID: 2256367023764341182, guid: 69f0f5aa212643f43b76eb32807fc855, type: 2}
+  - {fileID: -770549221024854772, guid: 1bcf75a2badcc9d41b40a2e8519b3382, type: 2}
+  - {fileID: 8934277784929082545, guid: 69f0f5aa212643f43b76eb32807fc855, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -261,7 +261,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 2
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -746,7 +746,8 @@ PlayerSettings:
     Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
@@ -858,11 +859,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 3e27a42c-d328-4f20-9080-9253c1372cd8
+  cloudProjectId: a9323d87-12ac-4e64-a9f9-48e3b4322e75
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: VR Fishing Truck
-  organizationId: shiroteakitsune
+  organizationId: keemoh
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

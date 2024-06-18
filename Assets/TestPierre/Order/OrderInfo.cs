@@ -25,7 +25,7 @@ public class OrderInfo : MonoBehaviour
     private void Start()
     {
         TimeRemaining = _timer;
-        Debug.Log("start => " + TimeRemaining.ToString());
+        Debug.Log("spawn => " + TimeRemaining.ToString());
         _orderNumber.text = OrderNumber.ToString();
         StartCoroutine(UpdateTimer());
     }
@@ -39,13 +39,13 @@ public class OrderInfo : MonoBehaviour
     {
         while (TimeRemaining > 0)
         {
-            Debug.Log("coroutine start");
+            //Debug.Log("coroutine start");
             TimeRemaining -= Time.deltaTime;
-            Debug.Log("deltaTime => " + Time.deltaTime.ToString());
-            Debug.Log(TimeRemaining / _timer);
+            //Debug.Log("deltaTime => " + Time.deltaTime.ToString());
+            //Debug.Log(TimeRemaining / _timer);
             _slider.value = TimeRemaining / _timer;
             _sliderImage.color = _gradient.Evaluate(_slider.value);
-            Debug.Log("slider = " + (TimeRemaining / _timer));
+            //Debug.Log("slider = " + (TimeRemaining / _timer));
             yield return null;
         }
         if(TimeRemaining <= 0) 

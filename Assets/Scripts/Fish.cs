@@ -1,40 +1,31 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : MonoBehaviour, IHeatable
+public class Fish : MonoBehaviour
 {
-    public int heatTime { get; set; }
-    public bool isCooked { get; set; }
+    [SerializeField] private CuttedFish cuttedFish;
 
-    private Coroutine heatingCoroutine;
+    public int knifeCutCount = 0;
 
-    void Start()
+    public void IncrementCut()
     {
-        heatTime = 5;
-        isCooked = false;
-    }
-    public void Heat()
-    {
-        Debug.Log("Fish is being heated : " + isCooked);
-
-        if (!isCooked && heatingCoroutine == null)
+        knifeCutCount++;
+        if(knifeCutCount >= 3)
         {
-            heatingCoroutine = StartCoroutine(Heating());
-            Debug.Log("Fish is being cooked");
-        }
-        else
-        {
-            Debug.Log("Fish is already cooked");
+            spawnCuttedFish();
         }
     }
 
-    private IEnumerator Heating()
+    private void spawnCuttedFish()
     {
-        Debug.Log("Fish is cooking");
-        yield return new WaitForSeconds(heatTime);
-        isCooked = true;
-        heatingCoroutine = null; // Reset coroutine reference after heating is done
+        var cutfish = Instantiate(cuttedFish);
+        cutfish.transform.position = transform.position;
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator Destroying()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(this.gameObject);
     }
 }
