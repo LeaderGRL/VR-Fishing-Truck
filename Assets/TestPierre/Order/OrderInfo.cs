@@ -14,8 +14,11 @@ public class OrderInfo : MonoBehaviour
     [SerializeField] private Gradient _gradient;
     [SerializeField] private Slider _slider;
     [SerializeField] private Image _sliderImage;
+    [SerializeField] private int _rewardPoints;
+    [SerializeField] private int _lateRewardPoints;
     // Start is called before the first frame update
 
+    public int RewardPoints => _rewardPoints;
     public Gradient Gradient => _gradient;
     public int OrderNumber = -1;
     public float TimeRemaining { get; private set; }
@@ -51,6 +54,7 @@ public class OrderInfo : MonoBehaviour
         if(TimeRemaining <= 0) 
         { 
             OnTimerFinished?.Invoke(this);
+            _rewardPoints = _lateRewardPoints;
             yield return null;
         }
         yield return null;

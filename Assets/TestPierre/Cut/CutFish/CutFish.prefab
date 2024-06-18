@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 4562800254539835231}
   m_Layer: 0
   m_Name: CutFish
-  m_TagString: Untagged
+  m_TagString: CutFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

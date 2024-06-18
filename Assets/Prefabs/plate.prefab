@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12500024
+      value: 0.1250002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0.00000002185569
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: plate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
+      propertyPath: m_TagString
+      value: Plate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -103,6 +107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8324753520149901088}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1049440264747688167}
   m_SourcePrefab: {fileID: 100100000, guid: de28a6ffd0e5864408730d665d952b1e, type: 3}
 --- !u!4 &7096988562518582009 stripped
 Transform:
@@ -194,10 +201,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1049440264747688167}
+        m_TargetAssemblyTypeName: Plate, Assembly-CSharp
+        m_MethodName: SnapFish
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1049440264747688167}
+        m_TargetAssemblyTypeName: Plate, Assembly-CSharp
+        m_MethodName: UnSnapFish
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -223,3 +254,16 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+--- !u!114 &1049440264747688167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581319399791818819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea11c0853df21e94a92fbfa9eb64b616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystems: []
