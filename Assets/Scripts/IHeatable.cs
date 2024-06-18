@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IHeatable
 {
-    int heatTime { get; set; }
-    bool isCooked { get; set; }
+    int HeatTime { get; set; }
+    bool IsCooked { get; set; }
     void Heat();
 }
