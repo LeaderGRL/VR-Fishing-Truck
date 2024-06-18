@@ -23,9 +23,11 @@ public class Extinguisher : MonoBehaviour
         Debug.DrawRay(raycastStartPoint.position, raycastStartPoint.forward * 10f, Color.red);
         if (Physics.Raycast(raycastStartPoint.position, raycastStartPoint.forward, out hit, 10f))
         {
+            Debug.Log(hit.collider.name);
             if (hit.collider.TryGetComponent(out VolumetricFire fire))
             {
-                //fire.TryExtinguish(amountExtinguishedPerSecond * Time.deltaTime);
+                Debug.Log("Extinguishing !");
+                fire.thickness -= 2 * Time.deltaTime;
             }
         }
 
