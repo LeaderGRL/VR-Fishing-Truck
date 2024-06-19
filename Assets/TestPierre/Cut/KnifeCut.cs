@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,44 +17,34 @@ public class KnifeCut : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter");
-        if (!cutBoard.FishIsSnapped) return;
-        Debug.Log("FIshIsSnapped -- ");
+        if (!cutBoard.FishIsSnapped) { Debug.Log("Trigger Knife : FIshIsSnapped"); return; }
+        Debug.Log("Trigger Knife : FIshIsSnapped");
         if (other.CompareTag("Collider1"))
         {
-            Debug.Log("COllision 1 -- ");
-            if (countCollider1 <= countCollider2 + 1) countCollider1++;
+            countCollider1++;
+            StartCoroutine(WaitThenResetCount());
         }
         if (other.CompareTag("Collider2"))
         {
-            Debug.Log("COllision 2 -- ");
-            if (countCollider1 <= countCollider1 + 1) countCollider2++;
+            if(countCollider1 >= 1)
+            countCollider2++;
         }
-        if (countCollider1 > count && countCollider2 > count)
+        if (countCollider1 > 1 && countCollider2 > 1)
         {
             if (!cutBoard.currentFish.IsUnityNull()) cutBoard.currentFish.IncrementCut();
-            OnFishCut?.Invoke();
+            //OnFishCut?.Invoke();
+            //count++;
+            countCollider1 = 0;
+            countCollider2 = 0;
+            StopCoroutine(WaitThenResetCount());
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private IEnumerator WaitThenResetCount()
     {
-        Debug.Log("OnCollision Enter");
-        if (!cutBoard.FishIsSnapped) return;
-        Debug.Log("FIshIsSnapped");
-        if (collision.collider == collider1)
-        {
-            Debug.Log("COllision 1");
-            if (countCollider1 <= countCollider2+1) countCollider1++;
-        }
-        if (collision.collider == collider2)
-        {
-            Debug.Log("COllision 2");
-            if (countCollider1 <= countCollider1 + 1) countCollider2++;
-        }
-        if(countCollider1 > count && countCollider2 > count)
-        {
-            if (!cutBoard.currentFish.IsUnityNull()) cutBoard.currentFish.knifeCutCount++;
-            OnFishCut?.Invoke();
-        }
+        yield return new WaitForSeconds(2);
+        Debug.Log("reset knife cut count");
+        countCollider1 = 0;
+        countCollider2 = 0;
     }
 }

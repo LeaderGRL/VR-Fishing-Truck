@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class OrderManager : MonoBehaviour
 {
     [SerializeField] private OrderInfo orderPrefab;
-    [SerializeField] private float SpawnTimer;
+    [SerializeField] private float SpawnTimerMin;
+    [SerializeField] private float SpawnTimerMax;
     [SerializeField] private Transform OrderListTransform;
     [SerializeField] private int maxOrders;
 
@@ -14,14 +13,19 @@ public class OrderManager : MonoBehaviour
     private float elapsedTime = 0f;
     private List<OrderInfo> orderList = new();
     public List<OrderInfo> OrderList => orderList;
+    private float spawnTimer;
 
+    private void Start()
+    {
+        spawnTimer = SpawnTimerMin;
+    }
 
     // Update is called once per frame
     void Update()
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime > SpawnTimer)
+        if (elapsedTime > spawnTimer)
         {
             elapsedTime = 0;
             if (orderList.Count >= maxOrders) return;
@@ -30,9 +34,15 @@ public class OrderManager : MonoBehaviour
             //order.OnTimerFinished += LateOrder;
             order.OrderNumber = OrderCount;
             OrderCount++;
+            spawnTimer = Random.Range(SpawnTimerMin, SpawnTimerMax);
         }
     }
     
+    public void ValidateOrder()
+    {
+        orderList[0].ValidateOrder();
+        orderList.Remove(orderList[0]);
+    }
     //private void LateOrder(OrderInfo order)
     //{
     //    Debug.Log("finish timer");
