@@ -17,7 +17,7 @@ public class Extinguisher : MonoBehaviour
     void Update()
     {
 
-        Fire();
+        //Fire();
 
         RaycastHit hit;
         Debug.DrawRay(raycastStartPoint.position, raycastStartPoint.forward * 10f, Color.red);
