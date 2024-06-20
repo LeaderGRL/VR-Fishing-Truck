@@ -32,7 +32,7 @@ public class HotPlate : MonoBehaviour
 
         if (_heatable.IsCooked && heatingCoroutine == null)
         {
-            heatingCoroutine = StartCoroutine(Enflame());
+            //heatingCoroutine = StartCoroutine(Enflame());
         }
     }
 

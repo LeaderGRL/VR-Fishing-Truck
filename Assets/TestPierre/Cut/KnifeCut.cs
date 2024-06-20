@@ -13,6 +13,12 @@ public class KnifeCut : MonoBehaviour
     private int countCollider2 = 0;
     private int count = 0;
     public event Action OnFishCut;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -31,12 +37,16 @@ public class KnifeCut : MonoBehaviour
         }
         if (countCollider1 > 1 && countCollider2 > 1)
         {
-            if (!cutBoard.currentFish.IsUnityNull()) cutBoard.currentFish.IncrementCut();
-            //OnFishCut?.Invoke();
-            //count++;
-            countCollider1 = 0;
-            countCollider2 = 0;
-            StopCoroutine(WaitThenResetCount());
+            if (!cutBoard.currentFish.IsUnityNull())
+            {
+                cutBoard.currentFish.IncrementCut();
+                audioSource.Play();
+                //OnFishCut?.Invoke();
+                //count++;
+                countCollider1 = 0;
+                countCollider2 = 0;
+                StopCoroutine(WaitThenResetCount());
+            }
         }
     }
 

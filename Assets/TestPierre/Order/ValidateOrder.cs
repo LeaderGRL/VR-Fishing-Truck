@@ -34,9 +34,6 @@ public class ValidateOrder : MonoBehaviour
                 }
                 audioSuccess.Play();
                 orderManager.ValidateOrder();
-                var spawnPlate = Instantiate(platePrefab);
-                spawnPlate.transform.position = spawnPosition.position;
-                spawnPlate.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else
             {
@@ -44,6 +41,11 @@ public class ValidateOrder : MonoBehaviour
                 if(!plate.interactable.IsUnityNull()) Destroy(plate?.interactable.transform.gameObject);
                 Destroy(plate.gameObject);
             }
+
+            //Spawn another plate
+            var spawnPlate = Instantiate(platePrefab);
+            spawnPlate.transform.position = spawnPosition.position;
+            spawnPlate.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
 }

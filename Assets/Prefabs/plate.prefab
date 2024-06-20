@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225691870213859429}
   - component: {fileID: 3099669101711606878}
-  - component: {fileID: 4663320990101702716}
+  - component: {fileID: 2815533279308337725}
   m_Layer: 0
   m_Name: SnapComponent
   m_TagString: Untagged
@@ -59,10 +59,34 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1049440264747688167}
+        m_TargetAssemblyTypeName: Plate, Assembly-CSharp
+        m_MethodName: HoverEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1049440264747688167}
+        m_TargetAssemblyTypeName: Plate, Assembly-CSharp
+        m_MethodName: HoverExit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
@@ -118,8 +142,8 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!65 &4663320990101702716
-BoxCollider:
+--- !u!135 &2815533279308337725
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,7 +161,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.2, z: 0.35}
+  m_Radius: 0.52
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8153514907738002915
 GameObject:
