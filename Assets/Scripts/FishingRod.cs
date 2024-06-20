@@ -185,7 +185,7 @@ public class FishingRod : MonoBehaviour
 		{
 			isCasted = true;
 			bait = Instantiate(baitPrefab, StartOfRod.transform.position, quaternion.identity);
-			bait.GetComponent<Rigidbody>().AddRelativeForce(StartOfRod.transform.forward * 5f, ForceMode.Impulse);
+			bait.GetComponent<Rigidbody>().AddRelativeForce(StartOfRod.transform.forward * 20f, ForceMode.Impulse);
 			isFishingAvailable = false;
 			_waitForFishToAppear = StartCoroutine(WaitForFishToAppear());
 		}
