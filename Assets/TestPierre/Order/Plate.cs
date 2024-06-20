@@ -8,6 +8,13 @@ public class Plate : MonoBehaviour
     private bool isComplete = false;
     public bool IsComplete => isComplete;
     public IXRInteractable interactable { get; private set; }
+
+    private Rigidbody body;
+
+    private void Start()
+    {
+        body = GetComponent<Rigidbody>();
+    }
     //[SerializeField] private ParticleSystem[] particleSystems;
 
     //private void OnTriggerEnter(Collider other)
@@ -24,6 +31,15 @@ public class Plate : MonoBehaviour
     //        Destroy(gameObject);
     //    }
     //}
+
+    public void HoverEnter(HoverEnterEventArgs args)
+    {
+        body.isKinematic = true;
+    }
+    public void HoverExit(HoverExitEventArgs args)
+    {
+        body.isKinematic = false;
+    }
 
     public void SnapFish(SelectEnterEventArgs args)
     {
@@ -48,6 +64,7 @@ public class Plate : MonoBehaviour
             isComplete = false;
             Debug.Log("Object is not FISH...");
         }
+        body.isKinematic = false;
     }
     public void UnSnapFish(SelectExitEventArgs args)
     {
@@ -57,5 +74,6 @@ public class Plate : MonoBehaviour
         }
         isComplete = false;
         interactable = null;
+        body.isKinematic = true;
     }
 }

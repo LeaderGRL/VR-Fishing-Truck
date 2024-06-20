@@ -17,5 +17,9 @@ public class Bait : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
+        else
+        {
+            Destroy(this);
+        }
     }
 }

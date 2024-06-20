@@ -27,6 +27,7 @@ public class FishingRod : MonoBehaviour
 	public float newPositionThresholdDistance = 0.05f;
 
 	public float recognitionThreshold = 0.6f;
+	[SerializeField] private FishSpawner fishSpawner;
 
 	[Serializable]
 	public class UnityStringEvent : UnityEvent<string> { }
@@ -42,6 +43,7 @@ public class FishingRod : MonoBehaviour
 	private float maxTimeRipple = 10f;
 	private float timeToGetFishBeforeGone = 5f;
 
+	public GameObject yipeePrefab;
 	public GameObject ripplesPrefab;
 	public GameObject baitPrefab;
 	private GameObject bait;
@@ -89,6 +91,10 @@ public class FishingRod : MonoBehaviour
 			ropeLR.positionCount = 2;
 			ropeLR.SetPosition(0, StartOfRod.transform.position);
 			ropeLR.SetPosition(1, bait.transform.position);
+		}
+		else if (isCasted && !bait)
+		{
+			StartCoroutine(DestroyBaitAfterTime());
 		}
 	}
 
@@ -200,11 +206,16 @@ public class FishingRod : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		StopCoroutine(_waitForFishToAppear);
 		ropeLR.positionCount = 0;
-		Destroy(bait);
+		if (bait)
+			Destroy(bait);
 		if (ripples)
 		{
 			Destroy(ripples);
+			Destroy(Instantiate(yipeePrefab), 3);
 			Debug.Log("YOU OBTAINED A FISH"); //Add fish to stock here
+			fishSpawner.SpawnFish();
+            var plate = Instantiate(_platePrefab);
+			plate.transform.position = transform.position;
 		}
 		isCasted = false;
 		isFishingAvailable = true;

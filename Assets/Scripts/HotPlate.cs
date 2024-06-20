@@ -7,21 +7,19 @@ public class HotPlate : MonoBehaviour
 
     [SerializeField] private GameObject _smokeEffect;
     [SerializeField] private GameObject _fireEffect;
-    [SerializeField] private AudioSource _cookingAudioSource;
-    [SerializeField] private AudioSource _timerAudioSource;
     
     private Coroutine heatingCoroutine;
-    private Coroutine timerAudioCoroutine;
     private IHeatable _heatable;
 
-    public int _timeToEnflame = 10;
-
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         _smokeEffect.GetComponent<ParticleSystem>().Stop();
         _fireEffect.SetActive(false);
+        TryGetComponent<AudioSource>(out _audioSource);
+
     }
 
     // Update is called once per frame
@@ -34,15 +32,7 @@ public class HotPlate : MonoBehaviour
 
         if (_heatable.IsCooked && heatingCoroutine == null)
         {
-            heatingCoroutine = StartCoroutine(Enflame());
-
-            if (_timerAudioSource)
-            {
-                Debug.Log("Playing timer audio source");
-                //_timerAudioSource.enabled = true;
-                _timerAudioSource.Play();
-                timerAudioCoroutine = StartCoroutine(StopTimerAudioSource());
-            }
+            //heatingCoroutine = StartCoroutine(Enflame());
         }
     }
 
@@ -55,10 +45,10 @@ public class HotPlate : MonoBehaviour
         {
             _smokeEffect.GetComponent<ParticleSystem>().Play();
 
-            if (_cookingAudioSource)
+            if (_audioSource)
             {
-                //_cookingAudioSource.enabled = true;
-                _cookingAudioSource.Play();
+                _audioSource.enabled = true;
+                _audioSource.Play();
             }
 
             _heatable.Heat();
@@ -79,10 +69,10 @@ public class HotPlate : MonoBehaviour
             _heatable = null;
             _smokeEffect.GetComponent<ParticleSystem>().Stop();
 
-            if (_cookingAudioSource)
+            if (_audioSource)
             {
-                //_cookingAudioSource.enabled = false;
-                _cookingAudioSource.Stop();
+                _audioSource.enabled = false;
+                _audioSource.Stop();
             }
 
             if (heatingCoroutine != null)
@@ -90,26 +80,13 @@ public class HotPlate : MonoBehaviour
                 StopCoroutine(heatingCoroutine);
                 heatingCoroutine = null;
             }
-
-            if (timerAudioCoroutine != null)
-            {
-                StopCoroutine(timerAudioCoroutine);
-                timerAudioCoroutine = null;
-            }
         }
     }
 
     private IEnumerator Enflame() {
-        yield return new WaitForSeconds(_timeToEnflame);
+        yield return new WaitForSeconds(6);
         Debug.Log("HotPlate is enflaming");
 
         _fireEffect.SetActive(true);
-    }
-
-    private IEnumerator StopTimerAudioSource()
-    {
-        yield return new WaitForSeconds(_timeToEnflame);
-        //_timerAudioSource.enabled = false;
-        _timerAudioSource.Stop();
     }
 }
