@@ -6,7 +6,7 @@ Properties {
 
 	SubShader { 
 
-        Tags{"RenderPipeline" = "UniversalRenderPipeline"}
+        Tags{"RenderPipeline" = "UniversalPipeline"}
 
 		Pass { 
 
