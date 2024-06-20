@@ -84,7 +84,7 @@ public class HotPlate : MonoBehaviour
     }
 
     private IEnumerator Enflame() {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6);
         Debug.Log("HotPlate is enflaming");
 
         _fireEffect.SetActive(true);

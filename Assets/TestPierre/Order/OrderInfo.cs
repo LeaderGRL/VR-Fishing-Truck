@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class OrderInfo : MonoBehaviour
 {
-
-    [SerializeField] private Image _image;
+    [SerializeField] private Image _backgroundImage;
+    [SerializeField] private Image _foodImage;
     [SerializeField] private TextMeshProUGUI _orderNumber;
     [SerializeField] private float _timer = 30f;
     [SerializeField] private Gradient _gradient;
@@ -58,5 +58,16 @@ public class OrderInfo : MonoBehaviour
             yield return null;
         }
         yield return null;
+    }
+
+    public void ValidateOrder()
+    {
+        StartCoroutine(Validate());
+    }
+    public IEnumerator Validate()
+    {
+        _backgroundImage.color = Color.green;
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }

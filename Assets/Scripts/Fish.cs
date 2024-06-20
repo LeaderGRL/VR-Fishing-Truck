@@ -10,6 +10,7 @@ public class Fish : MonoBehaviour
     public void IncrementCut()
     {
         knifeCutCount++;
+        Debug.Log("Increment cut => " + knifeCutCount);
         if (knifeCutCount >= 3)
         {
             spawnCuttedFish();

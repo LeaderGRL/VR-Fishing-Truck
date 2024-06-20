@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7043878094535472754}
   - component: {fileID: 1430187171719314921}
   m_Layer: 0
-  m_Name: Collider2
-  m_TagString: Collider2
+  m_Name: Collider1
+  m_TagString: Collider1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2991927195451014145}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64,8 +64,8 @@ GameObject:
   - component: {fileID: 6075446334704580129}
   - component: {fileID: 5404469013404318222}
   m_Layer: 0
-  m_Name: Collider1
-  m_TagString: Collider1
+  m_Name: Collider2
+  m_TagString: Collider2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,8 +170,8 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.05, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6075446334704580129}
   - {fileID: 7043878094535472754}
+  - {fileID: 6075446334704580129}
   - {fileID: 1804647579868011156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
