@@ -85,6 +85,12 @@ public class HotPlate : MonoBehaviour
                 _cookingAudioSource.Stop();
             }
 
+            if (_timerAudioSource)
+            {
+                //_timerAudioSource.enabled = false;
+                _timerAudioSource.Stop();
+            }
+
             if (heatingCoroutine != null)
             {
                 StopCoroutine(heatingCoroutine);
