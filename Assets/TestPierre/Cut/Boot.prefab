@@ -88,10 +88,10 @@ PrefabInstance:
       addedObject: {fileID: 8469241254565464299}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ccccbd092d68994c89b818cbc7ca076, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2149097965820644434}
+      addedObject: {fileID: -2422736590867765081}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ccccbd092d68994c89b818cbc7ca076, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2422736590867765081}
+      addedObject: {fileID: 5012965709728686475}
   m_SourcePrefab: {fileID: 100100000, guid: 9ccccbd092d68994c89b818cbc7ca076, type: 3}
 --- !u!1 &8348351375458947775 stripped
 GameObject:
@@ -277,28 +277,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!64 &2149097965820644434
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8348351375458947775}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2289070181733545370, guid: 8e083ab5d04e7444abfeaf8c874afc1b, type: 3}
 --- !u!114 &-2422736590867765081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,3 +291,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioPrefab: {fileID: 9045106322239491021, guid: 721ac175e9abb87468a00ede7cdee2c9, type: 3}
   clip: {fileID: 8300000, guid: 5127c0782ac78234289ffe9a1cd12c54, type: 3}
+--- !u!135 &5012965709728686475
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348351375458947775}
+  m_Material: {fileID: 13400000, guid: e6b46597ade58994e8a97309f6e37399, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.008827819
+  m_Center: {x: -0.00057585933, y: -0.00091966335, z: 0.006332969}

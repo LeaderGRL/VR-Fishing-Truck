@@ -162,6 +162,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.VRFishingTruck
+    Standalone: com.DefaultCompany.VR-Fishing-Truck
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -858,11 +859,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a9323d87-12ac-4e64-a9f9-48e3b4322e75
+  cloudProjectId: 3e27a42c-d328-4f20-9080-9253c1372cd8
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: VR Fishing Truck
-  organizationId: keemoh
+  organizationId: shiroteakitsune
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
