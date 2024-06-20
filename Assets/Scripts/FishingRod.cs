@@ -214,8 +214,6 @@ public class FishingRod : MonoBehaviour
 			Destroy(Instantiate(yipeePrefab), 3);
 			Debug.Log("YOU OBTAINED A FISH"); //Add fish to stock here
 			fishSpawner.SpawnFish();
-            var plate = Instantiate(_platePrefab);
-			plate.transform.position = transform.position;
 		}
 		isCasted = false;
 		isFishingAvailable = true;
