@@ -25,7 +25,7 @@ public class FishSpawner : MonoBehaviour
 
     public void SpawnFish()
     {
-        var obj = Instantiate(objectPrefabsToSpawn[Random.Range(0, objectPrefabsToSpawn.Length -1)]);
+        var obj = Instantiate(objectPrefabsToSpawn[Random.Range(0, objectPrefabsToSpawn.Length)]);
         obj.transform.position = new Vector3(Random.Range(minX, maxX), posY, Random.Range(minZ, maxZ));
     }
 }

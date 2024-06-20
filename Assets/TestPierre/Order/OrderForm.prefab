@@ -714,7 +714,7 @@ MonoBehaviour:
   _backgroundImage: {fileID: 9046358391750455506}
   _foodImage: {fileID: 92897884308962388}
   _orderNumber: {fileID: 3928691936901926978}
-  _timer: 60
+  _timer: 90
   _gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
