@@ -5,8 +5,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Plate : MonoBehaviour
 {
-    private bool isComplete = false;
-    public bool IsComplete => isComplete;
+    //private bool isComplete = false;
+    //public bool IsComplete => isComplete;
+
+    public OrderType TypeOrder { get; private set; }
     public IXRInteractable interactable { get; private set; }
 
     private Rigidbody body;
@@ -34,11 +36,15 @@ public class Plate : MonoBehaviour
 
     public void HoverEnter(HoverEnterEventArgs args)
     {
+        Debug.Log("Hover Enter");
         body.isKinematic = true;
+        body.constraints = RigidbodyConstraints.FreezeAll;
     }
     public void HoverExit(HoverExitEventArgs args)
     {
+        Debug.Log("Hover Exit");
         body.isKinematic = false;
+        body.constraints = RigidbodyConstraints.None;
     }
 
     public void SnapFish(SelectEnterEventArgs args)
@@ -51,29 +57,40 @@ public class Plate : MonoBehaviour
             if(fish.IsCooked)
             {
                 Debug.Log("FISH IS COOKED");
-                isComplete = true;
+                //isComplete = true;
+                TypeOrder = OrderType.CutFish;
             }
             else
             {
                 Debug.Log("FISH IS NOT COOKED");
-                isComplete = false;
+                //isComplete = false;
             }
         }
-        else
+        else if(args.interactableObject.transform.CompareTag("Fish"))
         {
-            isComplete = false;
+            //isComplete = false;
             Debug.Log("Object is not FISH...");
+            TypeOrder = OrderType.Fish;
         }
+        else if (args.interactableObject.transform.CompareTag("Boot"))
+        {
+            //isComplete = false;
+            Debug.Log("Object is not FISH...");
+            TypeOrder = OrderType.Boot;
+        }
+        args.interactableObject.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         body.isKinematic = false;
     }
     public void UnSnapFish(SelectExitEventArgs args)
     {
+        args.interactableObject.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         if (args.interactableObject.transform.CompareTag("CutFish"))
         {
             Debug.Log("UNSNAP FISH");
         }
-        isComplete = false;
+        //isComplete = false;
         interactable = null;
         body.isKinematic = true;
+        TypeOrder = OrderType.None;
     }
 }

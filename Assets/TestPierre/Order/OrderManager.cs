@@ -8,6 +8,9 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private float SpawnTimerMax;
     [SerializeField] private Transform OrderListTransform;
     [SerializeField] private int maxOrders;
+    [SerializeField] private ParticleSystem[] particleSystems;
+    [SerializeField] private AudioSource audioSuccess;
+    [SerializeField] private AudioSource audioFailure;
 
     private int OrderCount = 1;
     private float elapsedTime = 0f;
@@ -38,10 +41,23 @@ public class OrderManager : MonoBehaviour
         }
     }
     
-    public void ValidateOrder()
+    public void ValidateOrder(OrderType typeOrder)
     {
-        orderList[0].ValidateOrder();
-        orderList.Remove(orderList[0]);
+        foreach(var order in orderList)
+        {
+            if(order.TypeOrder == typeOrder)
+            {
+                foreach (var particle in particleSystems)
+                {
+                    particle.Play();
+                }
+                audioSuccess.Play();
+                order.ValidateOrder();
+                orderList.Remove(order);
+                return;
+            }
+        }
+        audioFailure.Play();
     }
     //private void LateOrder(OrderInfo order)
     //{
