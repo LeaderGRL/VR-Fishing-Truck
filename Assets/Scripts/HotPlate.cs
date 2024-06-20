@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class HotPlate : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _smokeEffect;
-    [SerializeField]
-    private GameObject _fireEffect;
+
+    [SerializeField] private GameObject _smokeEffect;
+    [SerializeField] private GameObject _fireEffect;
     
     private Coroutine heatingCoroutine;
     private IHeatable _heatable;
+
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         _smokeEffect.GetComponent<ParticleSystem>().Stop();
         _fireEffect.SetActive(false);
-        //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
-        //{
-        //    particleSystem.Stop();
-        //}
+        TryGetComponent<AudioSource>(out _audioSource);
+
     }
 
     // Update is called once per frame
@@ -31,8 +30,6 @@ public class HotPlate : MonoBehaviour
             return;
         }
 
-        _heatable.Heat();
-
         if (_heatable.IsCooked && heatingCoroutine == null)
         {
             heatingCoroutine = StartCoroutine(Enflame());
@@ -41,31 +38,24 @@ public class HotPlate : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("HotPlate is heating up");
-
         // check if collision object has IHeatable interface
         _heatable = collision.gameObject.GetComponent<IHeatable>();
 
         if (_heatable != null)
         {
-            Debug.Log("HotPlate detected a heatable object: " + collision.gameObject.name);
             _smokeEffect.GetComponent<ParticleSystem>().Play();
 
-            if (GetComponent<AudioSource>())
+            if (_audioSource)
             {
-                GetComponent<AudioSource>().enabled = true;
-                GetComponent<AudioSource>().Play();
+                _audioSource.enabled = true;
+                _audioSource.Play();
             }
+
+            _heatable.Heat();
         }
         else
         {
-            Debug.Log("Collision object does not have IHeatable interface: " + collision.gameObject.name);
             _smokeEffect.GetComponent<ParticleSystem>().Stop();
-            //_fireEffect.SetActive(false);
-            //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
-            //{
-            //    particleSystem.Stop();
-            //}
         }
 
         
@@ -73,28 +63,30 @@ public class HotPlate : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        Debug.Log("HotPlate is cooling down");
-
         // Check if the exiting object is the same as the current heatable object
         if (collision.gameObject.GetComponent<IHeatable>() == _heatable)
         {
             _heatable = null;
             _smokeEffect.GetComponent<ParticleSystem>().Stop();
-            //_fireEffect.SetActive(false);
-            //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
-            //{
-            //    particleSystem.Stop();
-            //}
+
+            if (_audioSource)
+            {
+                _audioSource.enabled = false;
+                _audioSource.Stop();
+            }
+
+            if (heatingCoroutine != null)
+            {
+                StopCoroutine(heatingCoroutine);
+                heatingCoroutine = null;
+            }
         }
     }
 
     private IEnumerator Enflame() {
         yield return new WaitForSeconds(5);
         Debug.Log("HotPlate is enflaming");
+
         _fireEffect.SetActive(true);
-        //foreach (ParticleSystem particleSystem in _fireEffect.GetComponentsInChildren<ParticleSystem>())
-        //{
-        //    particleSystem.Play();
-        //}
     }
 }

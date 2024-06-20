@@ -23,11 +23,6 @@ public class CuttedFish : MonoBehaviour, IHeatable
         if (!IsCooked && heatingCoroutine == null)
         {
             heatingCoroutine = StartCoroutine(Heating());
-            Debug.Log("Fish is being cooked");
-        }
-        else
-        {
-            Debug.Log("Fish is already cooked");
         }
     }
 
@@ -35,6 +30,7 @@ public class CuttedFish : MonoBehaviour, IHeatable
     {
         Debug.Log("Fish is cooking");
         yield return new WaitForSeconds(HeatTime);
+        Debug.Log("Fish is cooked");
         IsCooked = true;
         heatingCoroutine = null; // Reset coroutine reference after heating is done
     }
