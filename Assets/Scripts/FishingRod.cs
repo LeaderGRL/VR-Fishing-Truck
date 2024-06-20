@@ -42,6 +42,7 @@ public class FishingRod : MonoBehaviour
 	private float maxTimeRipple = 10f;
 	private float timeToGetFishBeforeGone = 5f;
 
+	public GameObject yipeePrefab;
 	public GameObject ripplesPrefab;
 	public GameObject baitPrefab;
 	private GameObject bait;
@@ -89,6 +90,10 @@ public class FishingRod : MonoBehaviour
 			ropeLR.positionCount = 2;
 			ropeLR.SetPosition(0, StartOfRod.transform.position);
 			ropeLR.SetPosition(1, bait.transform.position);
+		}
+		else if (isCasted && !bait)
+		{
+			StartCoroutine(DestroyBaitAfterTime());
 		}
 	}
 
@@ -200,10 +205,12 @@ public class FishingRod : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		StopCoroutine(_waitForFishToAppear);
 		ropeLR.positionCount = 0;
-		Destroy(bait);
+		if (bait)
+			Destroy(bait);
 		if (ripples)
 		{
 			Destroy(ripples);
+			Destroy(Instantiate(yipeePrefab), 3);
 			Debug.Log("YOU OBTAINED A FISH"); //Add fish to stock here
 		}
 		isCasted = false;

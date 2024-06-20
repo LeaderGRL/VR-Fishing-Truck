@@ -341,7 +341,7 @@ MonoBehaviour:
   inputButton: 2
   inputThreshold: 0.1
   movementSource: {fileID: 0}
-  debugPrefab: {fileID: 1182283856045761562, guid: 4b9bb3504e1ae1b489b5896dd2e77a23, type: 3}
+  debugPrefab: {fileID: 0}
   creationMode: 0
   newGestureName: 
   newPositionThresholdDistance: 0.05
@@ -349,6 +349,7 @@ MonoBehaviour:
   OnRecognized:
     m_PersistentCalls:
       m_Calls: []
+  yipeePrefab: {fileID: 1562511739526496, guid: 9b8ba25532ae67e408402b3fa31e4b88, type: 3}
   ripplesPrefab: {fileID: 202097427806888767, guid: 99a4521973f7e2a4a84e5500cf75b41f, type: 3}
   baitPrefab: {fileID: 3593354052046996464, guid: d03aac3df05b094438ed357e35bdc44f, type: 3}
   endOfRope: {fileID: 0}
