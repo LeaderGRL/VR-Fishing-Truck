@@ -30,6 +30,7 @@ public class WaterJet : MonoBehaviour
     public void Emit()
     {
         emitter.speed = emissionSpeed;
+        Debug.Log("Emitting some WWWWWWWWWWWWWWWWWWWater !");
     }
 
     public void StopEmit()
