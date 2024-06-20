@@ -71,15 +71,15 @@ public class FishingRod : MonoBehaviour
 		InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(inputSource), inputButton, out bool isPressed,
 			inputThreshold);
 
-		if (!isMoving && isPressed )
+		if (!isMoving && isPressed && isEquipped)
 		{
 			StartMovement();
 		}
-		else if (isMoving && !isPressed )
+		else if (isMoving && !isPressed && isEquipped)
 		{
 			EndMovement();
 		}
-		else if (isMoving && isPressed)
+		else if (isMoving && isPressed && isEquipped)
 		{
 			UpdateMovement();
 		}
@@ -167,7 +167,7 @@ public class FishingRod : MonoBehaviour
 		{
 			isEquipped = true;
 		}
-		else if(interactable.interactorsSelecting.Count == 0)
+		else if(interactable.interactorsSelecting.Count == 0 || interactable.interactorsSelecting.Count == 1 && interactable.interactorsSelecting[0] is not XRDirectInteractor)
 		{
 			isEquipped = false;
 		}
