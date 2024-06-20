@@ -345,7 +345,8 @@ MonoBehaviour:
   creationMode: 0
   newGestureName: 
   newPositionThresholdDistance: 0.05
-  recognitionThreshold: 0.6
+  recognitionThreshold: 0.4
+  fishSpawner: {fileID: 0}
   OnRecognized:
     m_PersistentCalls:
       m_Calls: []

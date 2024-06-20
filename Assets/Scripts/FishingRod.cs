@@ -41,7 +41,7 @@ public class FishingRod : MonoBehaviour
 	private bool isRipplesAvailable;
 	private float minTimeRipple = 5f;
 	private float maxTimeRipple = 10f;
-	private float timeToGetFishBeforeGone = 5f;
+	private float timeToGetFishBeforeGone = 10f;
 
 	public GameObject yipeePrefab;
 	public GameObject ripplesPrefab;
@@ -214,7 +214,8 @@ public class FishingRod : MonoBehaviour
 			Destroy(Instantiate(yipeePrefab), 3);
 			Debug.Log("YOU OBTAINED A FISH"); //Add fish to stock here
 			fishSpawner.SpawnFish();
-		}
+            fishSpawner.SpawnFish();
+        }
 		isCasted = false;
 		isFishingAvailable = true;
 		isRipplesAvailable = false;
