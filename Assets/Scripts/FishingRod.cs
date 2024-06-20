@@ -27,6 +27,7 @@ public class FishingRod : MonoBehaviour
 	public float newPositionThresholdDistance = 0.05f;
 
 	public float recognitionThreshold = 0.6f;
+	[SerializeField] private FishSpawner fishSpawner;
 
 	[Serializable]
 	public class UnityStringEvent : UnityEvent<string> { }
@@ -212,6 +213,9 @@ public class FishingRod : MonoBehaviour
 			Destroy(ripples);
 			Destroy(Instantiate(yipeePrefab), 3);
 			Debug.Log("YOU OBTAINED A FISH"); //Add fish to stock here
+			fishSpawner.SpawnFish();
+            var plate = Instantiate(_platePrefab);
+			plate.transform.position = transform.position;
 		}
 		isCasted = false;
 		isFishingAvailable = true;
