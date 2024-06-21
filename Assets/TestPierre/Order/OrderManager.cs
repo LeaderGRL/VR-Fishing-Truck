@@ -43,6 +43,7 @@ public class OrderManager : MonoBehaviour
     
     public void ValidateOrder(OrderType typeOrder)
     {
+        Debug.Log("type order = " + typeOrder);
         foreach(var order in orderList)
         {
             if(order.TypeOrder == typeOrder)

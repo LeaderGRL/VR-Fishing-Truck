@@ -49,11 +49,11 @@ public class Plate : MonoBehaviour
 
     public void SnapFish(SelectEnterEventArgs args)
     {
-        if (args.interactableObject.transform.CompareTag("CutFish"))
+        interactable = args.interactableObject;
+        if (interactable.transform.CompareTag("CutFish"))
         {
             Debug.Log("SNAP CUT FISH");
-            interactable = args.interactableObject;
-            var fish = args.interactableObject.transform.GetComponent<CuttedFish>();
+            var fish = interactable.transform.GetComponent<CuttedFish>();
             if(fish.IsCooked)
             {
                 Debug.Log("FISH IS COOKED");
@@ -63,31 +63,29 @@ public class Plate : MonoBehaviour
             else
             {
                 Debug.Log("FISH IS NOT COOKED");
+                TypeOrder = OrderType.None;
                 //isComplete = false;
             }
         }
-        else if(args.interactableObject.transform.CompareTag("Fish"))
+        else if(interactable.transform.CompareTag("Fish"))
         {
             //isComplete = false;
-            Debug.Log("Object is not FISH...");
+            Debug.Log("Object is Fish...");
             TypeOrder = OrderType.Fish;
         }
-        else if (args.interactableObject.transform.CompareTag("Boot"))
+        else if (interactable.transform.CompareTag("Boot"))
         {
             //isComplete = false;
-            Debug.Log("Object is not FISH...");
+            Debug.Log("Object is Boot...");
             TypeOrder = OrderType.Boot;
         }
-        args.interactableObject.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        interactable.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         body.isKinematic = false;
     }
     public void UnSnapFish(SelectExitEventArgs args)
     {
         args.interactableObject.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        if (args.interactableObject.transform.CompareTag("CutFish"))
-        {
-            Debug.Log("UNSNAP FISH");
-        }
+        Debug.Log("UNSNAP INGREDIENT");
         //isComplete = false;
         interactable = null;
         body.isKinematic = true;

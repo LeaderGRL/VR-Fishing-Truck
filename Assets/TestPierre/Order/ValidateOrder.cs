@@ -19,9 +19,9 @@ public class ValidateOrder : MonoBehaviour
             if (plate.TypeOrder == OrderType.Fish || plate.TypeOrder == OrderType.CutFish || plate.TypeOrder == OrderType.Boot)
             {
                 Debug.Log("VALIDATE ?");
-                Destroy(plate.interactable.transform.gameObject);
-                Destroy(plate.gameObject);
                 orderManager.ValidateOrder(plate.TypeOrder);
+                Destroy(plate. interactable.transform.gameObject);
+                Destroy(plate.gameObject);
             }
             else
             {
