@@ -42,13 +42,13 @@ public class OrderInfo : MonoBehaviour
         {
             _foodImage.sprite = _image1;
             _orderTextInfo.text = "Poisson cru";
-            typeOrder = OrderType.Fish;
+            typeOrder = OrderType.RawFish;
         }
         else if(random < 94)
         {
             _foodImage.sprite = _image2;
             _orderTextInfo.text = "Poisson cuit";
-            typeOrder = OrderType.CutFish;
+            typeOrder = OrderType.CookedFish;
         }
         else
         {
@@ -100,5 +100,5 @@ public class OrderInfo : MonoBehaviour
 
 public enum OrderType
 {
-    CutFish, Fish, Boot, None
+    CookedFish, RawFish, Boot, None
 }

@@ -10,10 +10,18 @@ public class CuttedFish : MonoBehaviour, IHeatable
 
     private Coroutine heatingCoroutine;
 
+    [SerializeField] private MeshRenderer[] meshs;
+    [SerializeField] private Material[] rawMat;
+    [SerializeField] private Material[] cookedMat;
+
     void Start()
     {
         HeatTime = heatTime;
         IsCooked = false;
+        foreach(var mesh in meshs)
+        {
+            mesh.material = rawMat[Random.Range(0, 2)];
+        }
     }
 
     public void Heat()
@@ -32,6 +40,10 @@ public class CuttedFish : MonoBehaviour, IHeatable
         yield return new WaitForSeconds(HeatTime);
         Debug.Log("Fish is cooked");
         IsCooked = true;
+        foreach (var mesh in meshs)
+        {
+            mesh.material = cookedMat[Random.Range(0, 2)];
+        }
         heatingCoroutine = null; // Reset coroutine reference after heating is done
     }
 }

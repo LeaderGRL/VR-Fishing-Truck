@@ -16,7 +16,7 @@ public class ValidateOrder : MonoBehaviour
         if (other.CompareTag("Plate")){
             Debug.Log("Plate attempt to validate");
             var plate = other.GetComponent<Plate>();
-            if (plate.TypeOrder == OrderType.Fish || plate.TypeOrder == OrderType.CutFish || plate.TypeOrder == OrderType.Boot)
+            if (plate.TypeOrder == OrderType.RawFish || plate.TypeOrder == OrderType.CookedFish || plate.TypeOrder == OrderType.Boot)
             {
                 Debug.Log("VALIDATE ?");
                 orderManager.ValidateOrder(plate.TypeOrder);

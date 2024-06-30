@@ -17,28 +17,34 @@ public class OrderManager : MonoBehaviour
     private List<OrderInfo> orderList = new();
     public List<OrderInfo> OrderList => orderList;
     private float spawnTimer;
+    private int currentMaxOrder;
 
     private void Start()
     {
         spawnTimer = SpawnTimerMin;
+        currentMaxOrder = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
         elapsedTime += Time.deltaTime;
-
         if (elapsedTime > spawnTimer)
         {
+            SpawnOrder();
+        }
+    }
+
+    private void SpawnOrder()
+    {
             elapsedTime = 0;
-            if (orderList.Count >= maxOrders) return;
+            if (orderList.Count >= currentMaxOrder) return;
             var order = Instantiate(orderPrefab, OrderListTransform);
             orderList.Add(order);
             //order.OnTimerFinished += LateOrder;
             order.OrderNumber = OrderCount;
             OrderCount++;
             spawnTimer = Random.Range(SpawnTimerMin, SpawnTimerMax);
-        }
     }
     
     public void ValidateOrder(OrderType typeOrder)
@@ -54,6 +60,7 @@ public class OrderManager : MonoBehaviour
                 }
                 audioSuccess.Play();
                 order.ValidateOrder();
+                if (currentMaxOrder < maxOrders) currentMaxOrder++;
                 orderList.Remove(order);
                 return;
             }

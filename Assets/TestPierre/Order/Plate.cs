@@ -58,12 +58,12 @@ public class Plate : MonoBehaviour
             {
                 Debug.Log("FISH IS COOKED");
                 //isComplete = true;
-                TypeOrder = OrderType.CutFish;
+                TypeOrder = OrderType.CookedFish;
             }
             else
             {
                 Debug.Log("FISH IS NOT COOKED");
-                TypeOrder = OrderType.None;
+                TypeOrder = OrderType.RawFish;
                 //isComplete = false;
             }
         }
@@ -71,7 +71,7 @@ public class Plate : MonoBehaviour
         {
             //isComplete = false;
             Debug.Log("Object is Fish...");
-            TypeOrder = OrderType.Fish;
+            TypeOrder = OrderType.None;
         }
         else if (interactable.transform.CompareTag("Boot"))
         {
